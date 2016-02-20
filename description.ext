@@ -1,0 +1,27 @@
+class Params
+{
+	class debugEnabled
+	{
+		title = "Debug Enabled";
+		values[] = {1,0};
+		texts[] = {"True","False"};
+		default = 0;
+	};
+	class rrfPersistence
+	{
+		title = "1st RRF - Persistence System";
+		values[] = {1,0};
+		texts[] = {"Enabled","Disabled"};
+		default = 0;
+	};
+	class rrfWebLoadout
+	{
+		title = "1st RRF - Web Loadout System";
+		values[] = {1,0};
+		texts[] = {"Enabled","Disabled"};
+		default = 0;
+	};
+};
+
+#include "framework\sounds\sounds.hpp"
+#include "framework\def\functions.hpp"
