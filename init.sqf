@@ -23,3 +23,9 @@ call compile preprocessFile "framework\init_common.sqf";
 if (!isDedicated) then {
 	call compile preprocessFile "framework\init_player.sqf";
 };
+
+_null = [[monitor1,monitor2,monitor3,monitor4,monitor5,monitor6],
+["test",
+"rodtest",
+"flying"]
+] execVM "framework\3rd_party\lfc\feedInit.sqf";
