@@ -15,8 +15,6 @@ publicVariable "pistolScores";
 
 
 //Load Server Scripts
-_h = [] execVM "framework\fnc\training\addMissionObjects.sqf";
-_h = [] execVM "framework\fnc\utility\clean.sqf";
 
 
 // Load the SQF Log

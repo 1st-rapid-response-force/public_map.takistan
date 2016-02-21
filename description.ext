@@ -23,5 +23,11 @@ class Params
 	};
 };
 
+
+// Framework Includes
 #include "framework\sounds\sounds.hpp"
 #include "framework\def\functions.hpp"
+
+// 3rd Party Includes
+#include "framework\3rd_party\CoalaOS\common.hpp"
+#include "framework\3rd_party\CoalaOS\base.hpp"

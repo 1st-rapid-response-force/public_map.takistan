@@ -24,8 +24,18 @@ if (!isDedicated) then {
 	call compile preprocessFile "framework\init_player.sqf";
 };
 
-_null = [[monitor1,monitor2,monitor3,monitor4,monitor5,monitor6],
-["test",
-"rodtest",
-"flying"]
-] execVM "framework\3rd_party\lfc\feedInit.sqf";
+
+
+// 3rd Party Init
+//_null = [[],[]] execVM "framework\3rd_party\lfc\feedInit.sqf";
+
+MISSION_ROOT = call { 
+private "_arr"; 
+_arr = toArray __FILE__; 
+_arr resize (count _arr - 8); 
+toString _arr 
+};
+[] execVM "framework\3rd_party\CoalaOS\initCoalaAfter.sqf";
+
+[] execVM "framework\3rd_party\fn_advancedSlingLoadingInit.sqf";
+missionNamespace setVariable ["SA_ASL_HEAVY_LIFTING_ENABLED",true,true];
