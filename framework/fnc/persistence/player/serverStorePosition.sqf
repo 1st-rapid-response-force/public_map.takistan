@@ -11,12 +11,14 @@
 
 	Returns: Nothing
 */
-_positionArray = _this select 0;
+_serverId = _this select 0;
+_positionArray = _this select 1;
 
-[[_positionArray]] spawn {
+[_serverId,[_positionArray]] spawn {
 
         private["_method", "_response", "_params"];
-        _perms = _this select 0;
+        _serverId = _this select 0;
+        _perms = _this select 1;
         _loadout = _perms select 0;
 
         _method = "SAVE_PLAYER_POSITION";

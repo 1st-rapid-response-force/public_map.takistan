@@ -107,4 +107,4 @@ _logFile_activity,
 _logFile_activity_view];
 
 // Call Function on Server by sending it the neccessary information
-[_playerUUID,_data] remoteExecCall ["rrf_fnc_persistence_medical_serverStoreMedical", 2];
+[_playerUUID,_array] remoteExecCall ["rrf_fnc_persistence_medical_serverStoreMedical", 2];

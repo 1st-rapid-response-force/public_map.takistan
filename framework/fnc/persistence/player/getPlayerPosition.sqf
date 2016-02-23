@@ -18,8 +18,8 @@ _player = _this select 0;
 _playerName = name _player;
 _playerUUID = getPlayerUID _player;
 _position = getPosASL player;
-_positionArray = [_playerUUID,_position];
+_positionArray = [_position,_playerUUID];
 
 
 // Call Function on Server by sending it the neccessary information
-[_positionArray] remoteExecCall ["rrf_fnc_persistence_player_serverStorePosition", 2];
+[1,_positionArray] remoteExecCall ["rrf_fnc_persistence_player_serverStorePosition", 2];
