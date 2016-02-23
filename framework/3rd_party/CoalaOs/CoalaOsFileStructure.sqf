@@ -21,11 +21,11 @@ coala_FileSystem = [["C:", 0, 0, [1,2, 17, 18, 19, 20, 21], 1],
 					["video.mp4", 14, 2, [], 0, "\A3\Missions_F_EPA\video\A_in_intro.ogv", "video"],
 					["video1.mp4", 15, 2, [], 0, "\A3\Missions_F_EPA\video\A_hub_quotation.ogv", "video"],
 					["video2.mp4", 16, 2, [], 0, "\A3\Missions_F_EPA\video\A_in_quotation.ogv", "video"],
-					["surveilence.exe", 17, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsSurveilence.sqf", "exe", "surveilence"],
-					["frontcam.exe", 18, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsFrontcam.sqf", "exe", "frontcam"],
-					["Bodycam.exe", 19, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsBodyCam.sqf", "exe", "bodycam"],
-					["BlueforTracker.exe", 20, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\BlueforTracker.sqf", "exe", "bluefortracker"],
-					["Chatty.exe", 21, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsChatty.sqf", "exe", "Chatty"]];
+					["tempFile", 17, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsSurveilence.sqf", "exe", "surveilence"],
+					["WEBCAM", 18, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsFrontcam.sqf", "exe", "frontcam"],
+					["RRF FORCE CAM", 19, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsBodyCam.sqf", "exe", "bodycam"],
+					["BLUFOR Tracker", 20, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\BlueforTracker.sqf", "exe", "bluefortracker"],
+					["SATCOM", 21, 0, [], 0, "framework\3rd_party\CoalaOS\Programs\CoalaOsChatty.sqf", "exe", "Chatty"]];
 					
 coala_ActivePrograms = [];
 coala_currentFolderId = 0;
@@ -128,7 +128,6 @@ fncoala_getFileWithName =
 	
 	_toFindFile
 };
-
 
 
 

@@ -8,35 +8,35 @@
 if (isServer) then {
   // Loadout
   if (rrfWebLoadout == 1) then {
-    rrf_fnc_loadout_serverGetLoadout = compile preprocessFile "framework\fnc\loadout\serverGetLoadout.sqf";
+    rrf_fnc_loadout_serverGetLoadout = compile preprocessfilelinenumbers "framework\fnc\loadout\serverGetLoadout.sqf";
   };
   // Persistence
   if (rrfPersistence == 1) then {
-    rrf_fnc_persistence_player_serverStoreLoadout =  compile preprocessFile 'framework\fnc\persistence\player\serverStoreLoadout.sqf';
-    rrf_fnc_persistence_player_serverStorePosition =  compile preprocessFile 'framework\fnc\persistence\player\serverStorePosition.sqf';
-    rrf_fnc_persistence_player_serverRestoreLoadout =  compile preprocessFile 'framework\fnc\persistence\player\serverRestoreLoadout.sqf';
-    rrf_fnc_persistence_player_serverRestorePosition =  compile preprocessFile 'framework\fnc\persistence\player\serverRestorePosition.sqf';
-    rrf_fnc_persistence_medical_serverStoreMedical =  compile preprocessFile 'framework\fnc\persistence\medical\serverStoreMedical.sqf';
-    rrf_fnc_persistence_medical_serverRestoreMedical =  compile preprocessFile 'framework\fnc\persistence\medical\serverRestoreMedical.sqf';
+    rrf_fnc_persistence_player_serverStoreLoadout =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverStoreLoadout.sqf';
+    rrf_fnc_persistence_player_serverStorePosition =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverStorePosition.sqf';
+    rrf_fnc_persistence_player_serverRestoreLoadout =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverRestoreLoadout.sqf';
+    rrf_fnc_persistence_player_serverRestorePosition =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverRestorePosition.sqf';
+    rrf_fnc_persistence_medical_serverStoreMedical =  compile preprocessfilelinenumbers 'framework\fnc\persistence\medical\serverStoreMedical.sqf';
+    rrf_fnc_persistence_medical_serverRestoreMedical =  compile preprocessfilelinenumbers 'framework\fnc\persistence\medical\serverRestoreMedical.sqf';
 
 
     rrf_fnc_persistence_medical_serverACEMedicalStore = "";
   };
 
-  rrf_fnc_analytics_analyticEvent = compile preprocessFile "framework\fnc\analytics\analyticEvent.sqf";
+  rrf_fnc_analytics_analyticEvent = compile preprocessfilelinenumbers "framework\fnc\analytics\analyticEvent.sqf";
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
 // Debug
 if (debugEnabled == 1) then {
-    rrf_fnc_debug_arrayCheck = compile preprocessFile "framework\fnc\debug\arrayCheck.sqf";
+    rrf_fnc_debug_arrayCheck = compile preprocessfilelinenumbers "framework\fnc\debug\arrayCheck.sqf";
 };
 
 // Loadout
 if (rrfWebLoadout == 1) then {
-  rrf_fnc_loadout_nameLoadoutBox = compile preprocessFile 'framework\fnc\loadout\nameLoadoutBox.sqf';
-  rrf_fnc_loadout_removeLoadoutBox = compile preprocessFile 'framework\fnc\loadout\removeLoadoutBox.sqf';
+  rrf_fnc_loadout_nameLoadoutBox = compile preprocessfilelinenumbers 'framework\fnc\loadout\nameLoadoutBox.sqf';
+  rrf_fnc_loadout_removeLoadoutBox = compile preprocessfilelinenumbers 'framework\fnc\loadout\removeLoadoutBox.sqf';
 };
 
 // Persistence
@@ -62,9 +62,12 @@ rrf_fnc_training_serverStoreRange =  compile preprocessfilelinenumbers 'framewor
 if (!isDedicated) then {
   // Loadout
   if (rrfWebLoadout == 1) then {
-    rrf_fnc_loadout_setupArmory = compile preprocessFile "framework\fnc\loadout\setupArmory.sqf";
-    rrf_fnc_loadout_getLoadout = compile preprocessFile "framework\fnc\loadout\getLoadout.sqf";
+    rrf_fnc_loadout_setupArmory = compile preprocessfilelinenumbers "framework\fnc\loadout\setupArmory.sqf";
+    rrf_fnc_loadout_getLoadout = compile preprocessfilelinenumbers "framework\fnc\loadout\getLoadout.sqf";
   };
+
+  rrf_fnc_toc_setupTOC = compile preprocessfilelinenumbers "framework\fnc\toc\setupTOC.sqf";
+  rrf_fnc_toc_openCoalaOS = compile preprocessfilelinenumbers "framework\fnc\toc\openCoalaOS.sqf";
 
 };
 

@@ -31,10 +31,6 @@ fnCoala_debug =
 
 waitUntil { scriptDone coalaFunctionsInit && scriptDone coalaHandlerInit && scriptDone coalaFileInit };
 
-_laptop = "Land_Laptop_unfolded_F" createVehicle position player;
-_laptop attachTo [player, [0,0.3,0], "head"];
-_laptop setDir (180);
-hideObject _laptop;
 
 _ok = createDialog "LaptopBase";
 sleep 0.10;
@@ -42,7 +38,7 @@ closeDialog 2;
 _ok = createDialog "LaptopBase";
 _CRLF = toString [0x0D, 0x0A];
 
-_welcomeText = format["Coala OS [Version 1.34.483]%1Copyright (c) 2015 Legion Corporation. All rights reserved. jk.%1%1%2 ", _CRLF, coala_currentFolderName];
+_welcomeText = format["Coala OS [Version 1.34.483]%1Copyright (c) 2015 Legion Corporation. All rights reserved.%1%1%2 ", _CRLF, coala_currentFolderName];
 ctrlSetText [1400, _welcomeText];
 
 [_coalaOpenPrograms] execVM "framework\3rd_party\CoalaOS\CoalaOsReopenPrograms.sqf";
@@ -61,6 +57,5 @@ if(!alive player) then
 foreach coala_ActivePrograms;
 missionNamespace setVariable ["CoalaLastOpenPrograms", coala_ActivePrograms];
 
-deleteVehicle _laptop;
 //coalaDisplay displayRemoveAllEventHandlers "MouseMoving";
 //coalaDisplay displayRemoveAllEventHandlers "MouseButtonUp";
