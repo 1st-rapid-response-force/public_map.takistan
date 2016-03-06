@@ -4,8 +4,6 @@
 * Version 1.0
 */
 
-#include "3rd_party\fastrope.sqf"
-
 [] execVM "framework\doc.sqf";
 
 [] spawn {
