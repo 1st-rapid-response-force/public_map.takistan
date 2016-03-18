@@ -11,18 +11,16 @@
 
 	Returns: Nothing
 */
-_serverId = _this select 0;
-_positionArray = _this select 1;
 
-[_serverId,[_positionArray]] spawn {
+_server_id = server_id;
+_uuid = _this select 0;
+_position = _this select 1;
 
-        private["_method", "_response", "_params"];
-        _serverId = _this select 0;
-        _perms = _this select 1;
-        _loadout = _perms select 0;
-
-        _method = "SAVE_PLAYER_POSITION";
-        _params = [_loadout];
+[_uuid, _position] spawn {
+        _uuid = _this select 0;
+        _position = _this select 1;
+        _method = "save_position";
+        _params = [[server_id,_uuid, _position]];
         _response = [_method, _params] call sock_rpc;
 
 };

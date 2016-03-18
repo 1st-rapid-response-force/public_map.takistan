@@ -13,4 +13,5 @@
 
 _player = _this select 0;
 _posCoord = _this select 1;
-_player setPosASL _posCoord;
+
+player setPosASL _posCoord;

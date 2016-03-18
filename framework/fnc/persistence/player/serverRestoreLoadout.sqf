@@ -12,26 +12,24 @@
 	Returns: Nothing
 */
 
+_serverID = server_id;
 _player = _this select 0;
+_ownerID = _this select 1;
 _playerUUID = getPlayerUID _player;
-_ownerID = owner _player;
-
-
 //Fusion Code to Pull and store information
-[[_playerUUID,_player,_ownerID]] spawn {
-
-        private["_method", "_response", "_params"];
-        _perms = _this select 0;
-        _uuid = _perms select 0;
-				_player = _perms select 1;
-				_ownerID = _perms select 2;
-
-        _method = "RESTORE_PLAYER_EQUIPMENT";
-        _params = [_uuid];
+[_playerUUID,_player,_ownerID] spawn {
+		_uuid = _this select 0;
+		_player = _this select 1;
+		_ownerID = _this select 2;
+		_position = _this select 3;
+        _method = "restore_inventory";
+        _params = [[server_id,_uuid]];
         _response = [_method, _params] call sock_rpc;
-	_loadoutArray = _response;
+		_loadoutArray = call compile _response;
 
-	//Fusion will need to return a null for no value found
-	    [_player,_loadoutArray,["ammo"]] remoteExecCall ["rrf_fnc_persistence_player_restorePlayerLoadout",_ownerID];
+		hint format ["%1", _response];
+
+		//Fusion will need to restore loadout or store existing if no match is found.
+ 		_h = [_player,_loadoutArray,true,true] remoteExecCall ["ACE_common_fnc_setAllGear",_ownerID];
 
 };

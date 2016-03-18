@@ -30,7 +30,7 @@ _analystics = ["Loadout Accessed",_uuid] spawn rrf_fnc_analytics_analyticEvent;
         _params = [_uuid];
         _response = [_method, _params] call sock_rpc;
 
-		_case = "SMA_CASE_SMA_MK17" createVehicle getMarkerPos "spawn_test";
+		_case = "SMA_CASE_SMA_MK17" createVehicle getMarkerPos "armory_spawn";
 
 		//Add Actions Name of Player to all boxes/ and Remove
     [_case,_name] remoteExecCall ["rrf_fnc_loadout_nameLoadoutBox",0,true];

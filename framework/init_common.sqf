@@ -6,7 +6,5 @@
 
 
 if (rrfWebLoadout == 1) then {
-    _arm = [arm] call rrf_fnc_loadout_setupArmory;
+    _arm = [armory] call rrf_fnc_loadout_setupArmory;
 };
-
-_toc = [[comp1,comp2,comp3]] call rrf_fnc_toc_setupTOC;

@@ -13,10 +13,6 @@ pistolScores = [0,0,0,0,0,0,0];
 publicVariable "rifleScores";
 publicVariable "pistolScores";
 
-
-//Load Server Scripts
-
-
 // Load the SQF Log
 private["_h"];
 _h = [] execVM "framework\lib\log.sqf";
@@ -26,3 +22,8 @@ waitUntil {scriptDone _h};
 private["_h"];
 _h = [] execVM "framework\lib\sock.sqf";
 waitUntil {scriptDone _h};
+
+// Fusion Enabled
+if (rrfFusion == 1) then {
+	_h =  ["development","wake"] call rrf_fnc_utility_serverGetID;
+};

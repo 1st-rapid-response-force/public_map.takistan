@@ -8,6 +8,7 @@ enableSaving [false, false];
 
 //Perms
 debugEnabled = "debugEnabled" call BIS_fnc_getParamValue;
+rrfFusion = "rrfFusion" call BIS_fnc_getParamValue;
 rrfPersistence = "rrfPersistence" call BIS_fnc_getParamValue;
 rrfWebLoadout = "rrfWebLoadout" call BIS_fnc_getParamValue;
 
@@ -23,16 +24,6 @@ call compile preprocessFile "framework\init_common.sqf";
 if (!isDedicated) then {
 	call compile preprocessFile "framework\init_player.sqf";
 };
-
-
-
-// 3rd Party Init
-_null = [[monitor],["command","theatreCommand","cam1","cam2","cam3","cam4","cam5","cam6","cam7","cam8","cam9","cam10","cam11","cam12","cam13","cam14","cam15","cam16","cam17","cam18","cam19","cam20"]] execVM "framework\3rd_party\lfc\feedInit.sqf";
-_null = [[monitor1],["command","theatreCommand","cam1","cam2","cam3","cam4","cam5","cam6","cam7","cam8","cam9","cam10","cam11","cam12","cam13","cam14","cam15","cam16","cam17","cam18","cam19","cam20"]] execVM "framework\3rd_party\lfc\feedInit.sqf";
-_null = [[monitor2],["command","theatreCommand","cam1","cam2","cam3","cam4","cam5","cam6","cam7","cam8","cam9","cam10","cam11","cam12","cam13","cam14","cam15","cam16","cam17","cam18","cam19","cam20"]] execVM "framework\3rd_party\lfc\feedInit.sqf";
-_null = [[monitor3],["command","theatreCommand","cam1","cam2","cam3","cam4","cam5","cam6","cam7","cam8","cam9","cam10","cam11","cam12","cam13","cam14","cam15","cam16","cam17","cam18","cam19","cam20"]] execVM "framework\3rd_party\lfc\feedInit.sqf";
-_null = [[monitor4],["command","theatreCommand","cam1","cam2","cam3","cam4","cam5","cam6","cam7","cam8","cam9","cam10","cam11","cam12","cam13","cam14","cam15","cam16","cam17","cam18","cam19","cam20"]] execVM "framework\3rd_party\lfc\feedInit.sqf";
-_null = [[monitor5],["command","theatreCommand","cam1","cam2","cam3","cam4","cam5","cam6","cam7","cam8","cam9","cam10","cam11","cam12","cam13","cam14","cam15","cam16","cam17","cam18","cam19","cam20"]] execVM "framework\3rd_party\lfc\feedInit.sqf";
 
 MISSION_ROOT = call { 
 private "_arr"; 

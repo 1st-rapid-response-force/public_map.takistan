@@ -8,16 +8,21 @@
 
 [] spawn {
 	waitUntil {!isNull player};
+
+	titleText ["DEPLOYMENT WAKE ISLAND\n\n 1st RRF\n\n Version 1.0", "BLACK FADED", .5];
+	sleep 5;
+
 	//Gets ID used for remoteExec
 	_ownerID = owner player;
-
-
 	// Persistence Code - Calls to Server / Server Excutes Actual Functions to Player
-/*
-if (rrfPersistence == 1) then {
-		[player,_ownerID] remoteExecCall ["rrf_fnc_persistence_player_serverRestoreLoadout",2];
-		[player,_ownerID] remoteExecCall ["rrf_fnc_persistence_player_serverRestorePosition",2];
-};
-*/
+	if (rrfPersistence == 1) then {
+			[player,_ownerID] remoteExecCall ["rrf_fnc_persistence_player_serverRestoreLoadout",2];
+			[player,_ownerID] remoteExecCall ["rrf_fnc_persistence_player_serverRestorePosition",2];
+			sleep 5;
+			_h = [player,_ownerID] spawn rrf_fnc_loops_criticalLoop;
+			_h = [player,_ownerID] spawn rrf_fnc_loops_nonCriticalLoop;
+	};
 
 };
+
+
