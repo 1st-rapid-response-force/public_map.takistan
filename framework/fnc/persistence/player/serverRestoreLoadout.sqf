@@ -27,8 +27,6 @@ _playerUUID = getPlayerUID _player;
         _response = [_method, _params] call sock_rpc;
 		_loadoutArray = call compile _response;
 
-		hint format ["%1", _response];
-
 		//Fusion will need to restore loadout or store existing if no match is found.
  		_h = [_player,_loadoutArray,true,true] remoteExecCall ["ACE_common_fnc_setAllGear",_ownerID];
 
