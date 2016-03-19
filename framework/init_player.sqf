@@ -18,6 +18,7 @@
 	if (rrfPersistence == 1) then {
 			[player,_ownerID] remoteExecCall ["rrf_fnc_persistence_player_serverRestoreLoadout",2];
 			[player,_ownerID] remoteExecCall ["rrf_fnc_persistence_player_serverRestorePosition",2];
+			[player,_ownerID] remoteExecCall ["rrf_fnc_persistence_medical_serverRestoreMedical",2];
 			sleep 5;
 			_h = [player,_ownerID] spawn rrf_fnc_loops_criticalLoop;
 			_h = [player,_ownerID] spawn rrf_fnc_loops_nonCriticalLoop;
