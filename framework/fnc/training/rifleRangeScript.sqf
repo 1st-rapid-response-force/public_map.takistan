@@ -28,18 +28,16 @@ _laneNum = _this select 0;
 _rangeArray = _this select 1;
 _timeBetweenTargets = _this select 2;
 _storeResult = _this select 3;
-
-_rifleArray = RangerMaster getVariable "rifleScores";
-_rifleArray set [_laneNum,0];
-RangerMaster setVariable ["rifleScores", _rifleArray];
+profileNamespace setVariable ["lane_score",0];
 
 fnc_target ={
-	_laneNum = _this select 0;
-	_rifleArray = RangerMaster getVariable "rifleScores";
-	_laneScore = (_rifleArray select _laneNum)+1;
-	_rifleArray set [_laneNum,_laneScore];
-	RangerMaster setVariable ["rifleScores", _rifleArray];
-	RangerMaster sideChat format["LANE - %1 - %2/60",_laneNum,_laneScore];
+	_object = _this select 0;
+	_laneNum = _this select 1;
+	_laneScore = profileNamespace getVariable "lane_score";
+	//Increment
+	_laneScore = _laneScore+1;
+	profileNamespace setVariable ["lane_score",_laneScore];
+	RangerMaster sideChat format["RIFLE LANE %1 - %2/60",_laneNum,_laneScore];
 };
 
 fnc_countDown10 = {
@@ -68,6 +66,7 @@ hint "STANDING POSITION";
 _null = call fnc_countDown10;
 //Drop Targets
 {_x animate ["terc", 1];} forEach _rangeArray;
+{_x addMPEventHandler ["MPHit", format ["_null = [%1,%2] call fnc_target", _x, _laneNum]];} forEach _rangeArray;
 
 //Standing
 _stageMaxScore = 10;
@@ -76,14 +75,11 @@ sleep _timeBetweenTargets;
 hint "Range is HOT!";
 for "_i" from 1 to _stageMaxScore do {
 	_target = _rangeArray call BIS_fnc_selectRandom;
-	_target addMPEventHandler ["MPHit", format ["_null = [%1] call fnc_target", _laneNum]];
 	_target animate ["terc", 0];
 	sleep _timeBetweenTargets;
 	_target animate ["terc", 1];
-	_target removeMPEventHandler ["MPHit", 0];
 };
-_rifleArray = RangerMaster getVariable "rifleScores";
-_laneScore = _rifleArray select _laneNum;
+_laneScore = profileNamespace getVariable "lane_score";
 hint format ["Total Score: %1/60",_laneScore];
 
 //Crouch
@@ -98,14 +94,11 @@ sleep _timeBetweenTargets;
 hint "Range is HOT!";
 for "_i" from 1 to _stageMaxScore do {
 	_target = _rangeArray call BIS_fnc_selectRandom;
-	_target addMPEventHandler ["MPHit", format ["_null = [%1] call fnc_target", _laneNum]];
 	_target animate ["terc", 0];
 	sleep _timeBetweenTargets;
 	_target animate ["terc", 1];
-	_target removeMPEventHandler ["MPHit", 0];
 };
-_rifleArray = RangerMaster getVariable "rifleScores";
-_laneScore = _rifleArray select _laneNum;
+_laneScore = profileNamespace getVariable "lane_score";
 hint format ["Total Score: %1/60",_laneScore];
 
 //Prone
@@ -121,18 +114,17 @@ sleep _timeBetweenTargets;
 hint "Range is HOT!";
 for "_i" from 1 to _stageMaxScore do {
 	_target = _rangeArray call BIS_fnc_selectRandom;
-	_target addMPEventHandler ["MPHit", format ["_null = [%1] call fnc_target", _laneNum]];
 	_target animate ["terc", 0];
 	sleep _timeBetweenTargets;
 	_target animate ["terc", 1];
-	_target removeMPEventHandler ["MPHit", 0];
 };
 _rifleArray = RangerMaster getVariable "rifleScores";
-_laneScore = _rifleArray select _laneNum;
+_laneScore = profileNamespace getVariable "lane_score";
 hint format ["Total Score: %1/60",_laneScore];
 
 //Reset Range
 sleep 5;
+{_x removeMPEventHandler ["MPHit", 0];} forEach _rangeArray;
 {_x animate ["terc", 0];} forEach _rangeArray;
 hint "CEASE FIRE - RANGE IS CLEAR. Return to your instructor for further details.";
 
@@ -143,4 +135,4 @@ hint "CEASE FIRE - RANGE IS CLEAR. Return to your instructor for further details
 sleep 5;
 //Determine Qualification
 hint format ["Final Report: %1/60 \n \n Remove the Magazine from your weapon!",_laneScore];
-
+profileNamespace setVariable ["lane_score",0];

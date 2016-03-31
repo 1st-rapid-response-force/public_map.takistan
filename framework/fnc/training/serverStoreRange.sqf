@@ -15,18 +15,15 @@
 	Nothing
 */
 
+_server_id = server_id;
 _uuid = _this select 0;
-_name = _this select 1;
-_qualification = _this select 2;
+_position = _this select 1;
 
-[_uuid,_name,_qualification] spawn {
-
-        private["_method", "_response", "_params"];
-        _perms = _this select 0;
-        _loadout = _perms select 0;
-
-        _method = "SAVE_PLAYER_POSITION";
-        _params = [_loadout];
+[_uuid, _name, _qualification] spawn {
+        _uuid = _this select 0;
+        _position = _this select 1;
+        _method = "save_qualification";
+        _params = [[server_id,_uuid, _uuid, _qualification]];
         _response = [_method, _params] call sock_rpc;
 
 };
