@@ -17,13 +17,19 @@
 
 _server_id = server_id;
 _uuid = _this select 0;
-_position = _this select 1;
+_name = _this select 1;
+_score = _this select 2;
+_scoreMax = _this select 3;
+_weaponUsed = _this select 4;
 
-[_uuid, _name, _qualification] spawn {
+[_uuid, _name, _score, _scoreMax, _weaponUsed] spawn {
         _uuid = _this select 0;
-        _position = _this select 1;
+		_name = _this select 1;
+		_score = _this select 2;
+		_scoreMax = _this select 3;
+		_weaponUsed = _this select 4;
         _method = "save_qualification";
-        _params = [[server_id,_uuid, _uuid, _qualification]];
+        _params = [[server_id,_uuid, _name, _score, _scoreMax, _weaponUsed]];
         _response = [_method, _params] call sock_rpc;
 
 };

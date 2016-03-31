@@ -130,7 +130,13 @@ hint "CEASE FIRE - RANGE IS CLEAR. Return to your instructor for further details
 
 //Submit Score to all Clients
 // We will need to create a method for storing this information
-//[_uuid,_name] remoteExecCall ["rrf_fnc_training_serverStoreRange",2];
+if (rrfFusion == 1) then {
+	if (_storeResult == 1) then {
+	    _store = [_uuid, _rangeType, _laneScore, 60, _weapon] remoteExecCall ["rrf_fnc_training_serverStoreRange",2];
+	    RangerMaster sideChat format["RIFLE LANE %1 - %2/60 - Score has been saved to Catalyst",_laneNum,_laneScore];
+	};
+};
+//
 
 sleep 5;
 //Determine Qualification

@@ -25,6 +25,15 @@ if (isServer) then {
     rrf_fnc_persistence_medical_serverRestoreMedical =  compile preprocessfilelinenumbers 'framework\fnc\persistence\medical\serverRestoreMedical.sqf';
   };
 
+  // Analytics
+  if (rrfAnalytics == 1) then {
+    rrf_fnc_analytics_playtimeEvent =  compile preprocessfilelinenumbers 'framework\fnc\analytics\playtimeEvent.sqf';
+    rrf_fnc_analytics_analyticEvent =  compile preprocessfilelinenumbers 'framework\fnc\analytics\analyticEvent.sqf';
+  };
+
+  // Training
+  rrf_fnc_training_serverStoreRange =  compile preprocessfilelinenumbers 'framework\fnc\training\serverStoreRange.sqf';
+
   rrf_fnc_analytics_analyticEvent = compile preprocessfilelinenumbers "framework\fnc\analytics\analyticEvent.sqf";
 };
 
@@ -50,6 +59,12 @@ if (rrfPersistence == 1) then {
   rrf_fnc_persistence_player_restorePlayerPosition =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\restorePlayerPosition.sqf';
   rrf_fnc_persistence_medical_getPlayerMedical =  compile preprocessfilelinenumbers 'framework\fnc\persistence\medical\getACEMedicalStatus.sqf';
   rrf_fnc_persistence_medical_restorePlayerMedical =  compile preprocessfilelinenumbers 'framework\fnc\persistence\medical\restoreACEMedicalStatus.sqf';
+};  
+
+// Analytics
+if (rrfAnalytics == 1) then {
+  rrf_fnc_analytics_deathEvent =  compile preprocessfilelinenumbers 'framework\fnc\analytics\deathEvent.sqf';
+  rrf_fnc_analytics_respawnEvent =  compile preprocessfilelinenumbers 'framework\fnc\analytics\respawnEvent.sqf';
 };
 
 // Mission Specific
@@ -57,7 +72,7 @@ rrf_fnc_training_rifleRange =  compile preprocessfilelinenumbers 'framework\fnc\
 rrf_fnc_training_pistolRange =  compile preprocessfilelinenumbers 'framework\fnc\training\pistolRangeScript.sqf';
 rrf_fnc_training_longRange =  compile preprocessfilelinenumbers 'framework\fnc\training\longRangeScript.sqf';
 rrf_fnc_training_grenadeRange =  compile preprocessfilelinenumbers 'framework\fnc\training\grenadeRangeScript.sqf';
-rrf_fnc_training_serverStoreRange =  compile preprocessfilelinenumbers 'framework\fnc\training\serverStoreRange.sqf';
+
 
 
 /////////////////////CLIENT\\\\\\\\\\\\\\\\\\\\\

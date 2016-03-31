@@ -11,5 +11,8 @@ _ownerID = _this select 1;
 
 while {true} do {
         sleep 60;
+
+        // Credit Playtime
+        //_h = [_playerUUID] call rrf_fnc_analytics_playtimeEvent;
         
     };

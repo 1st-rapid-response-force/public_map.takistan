@@ -16,5 +16,5 @@ while {true} do {
         _h = [_player] call rrf_fnc_persistence_player_getPlayerPosition;
 
         // Save Medical Status
-        _h = [_player] call rrf_fnc_persistence_medical_getPlayerMedical;
+        //_h = [_player] call rrf_fnc_persistence_medical_getPlayerMedical;
     };
