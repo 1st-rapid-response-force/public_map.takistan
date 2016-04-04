@@ -17,7 +17,7 @@ _uuid = _this select 0;
         _uuid = _this select 0;
         _position = _this select 1;
         _method = "analytics_playtime";
-        _params = [[server_id,_uuid]];
+        _params = [[server_id,_uuid,1]];
         _response = [_method, _params] call sock_rpc;
 
 };

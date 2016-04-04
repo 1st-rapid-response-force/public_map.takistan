@@ -10,7 +10,7 @@ if (isServer) then {
   if (rrfFusion == 1) then {
     rrf_fnc_utility_serverGetID = compile preprocessfilelinenumbers 'framework\fnc\utility\serverGetID.sqf';
   };
-  
+
   // Loadout
   if (rrfWebLoadout == 1) then {
     rrf_fnc_loadout_serverGetLoadout = compile preprocessfilelinenumbers "framework\fnc\armory\serverGetLoadout.sqf";
@@ -59,7 +59,7 @@ if (rrfPersistence == 1) then {
   rrf_fnc_persistence_player_restorePlayerPosition =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\restorePlayerPosition.sqf';
   rrf_fnc_persistence_medical_getPlayerMedical =  compile preprocessfilelinenumbers 'framework\fnc\persistence\medical\getACEMedicalStatus.sqf';
   rrf_fnc_persistence_medical_restorePlayerMedical =  compile preprocessfilelinenumbers 'framework\fnc\persistence\medical\restoreACEMedicalStatus.sqf';
-};  
+};
 
 // Analytics
 if (rrfAnalytics == 1) then {
@@ -67,11 +67,14 @@ if (rrfAnalytics == 1) then {
   rrf_fnc_analytics_respawnEvent =  compile preprocessfilelinenumbers 'framework\fnc\analytics\respawnEvent.sqf';
 };
 
-// Mission Specific
+// Training Scripts
 rrf_fnc_training_rifleRange =  compile preprocessfilelinenumbers 'framework\fnc\training\rifleRangeScript.sqf';
+rrf_fnc_training_marksmanRange =  compile preprocessfilelinenumbers 'framework\fnc\training\marksmanRangeScript.sqf';
 rrf_fnc_training_pistolRange =  compile preprocessfilelinenumbers 'framework\fnc\training\pistolRangeScript.sqf';
 rrf_fnc_training_longRange =  compile preprocessfilelinenumbers 'framework\fnc\training\longRangeScript.sqf';
 rrf_fnc_training_grenadeRange =  compile preprocessfilelinenumbers 'framework\fnc\training\grenadeRangeScript.sqf';
+rrf_fnc_training_resetRange =  compile preprocessfilelinenumbers 'framework\fnc\training\resetRangeScript.sqf';
+rrf_fnc_training_getRangeScores =  compile preprocessfilelinenumbers 'framework\fnc\training\getRangeScoresScript.sqf';
 
 
 

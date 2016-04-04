@@ -18,7 +18,7 @@
 _player = player;
 _uuid = getPlayerUID _player;
 _name = name player;
-_weapon = primaryWeapon _player;
+_weapon = currentWeapon _player;
 
 _rangeType = "Rifle Range";
 _laneScore = 0;
@@ -28,17 +28,22 @@ _laneNum = _this select 0;
 _rangeArray = _this select 1;
 _timeBetweenTargets = _this select 2;
 _storeResult = _this select 3;
-profileNamespace setVariable ["lane_score",0];
+_rangeMaster = _this select 4;
+
+call (compile (format ["profileNamespace setVariable [""lane_score_%1"",%2];",_laneNum,0]));
 
 fnc_target ={
 	_object = _this select 0;
+	_object removeMPEventHandler ["MPHit", 0];
 	_laneNum = _this select 1;
-	_laneScore = profileNamespace getVariable "lane_score";
+	_laneScore = call (compile (format ["profileNamespace getVariable ""lane_score_%1"";",_laneNum]));
 	//Increment
 	_laneScore = _laneScore+1;
-	profileNamespace setVariable ["lane_score",_laneScore];
-	RangerMaster sideChat format["RIFLE LANE %1 - %2/60",_laneNum,_laneScore];
+	call (compile (format ["profileNamespace setVariable [""lane_score_%1"",%2];",_laneNum,_laneScore]));
+
 };
+
+
 
 fnc_countDown10 = {
 	for "_i" from 5 to 0 step -1 do {
@@ -66,20 +71,30 @@ hint "STANDING POSITION";
 _null = call fnc_countDown10;
 //Drop Targets
 {_x animate ["terc", 1];} forEach _rangeArray;
-{_x addMPEventHandler ["MPHit", format ["_null = [%1,%2] call fnc_target", _x, _laneNum]];} forEach _rangeArray;
 
 //Standing
 _stageMaxScore = 10;
-titleText ["Standing - 10 Round","PLAIN",1];
 sleep _timeBetweenTargets;
 hint "Range is HOT!";
+_previousTarget = _rangeArray select 0;
+
 for "_i" from 1 to _stageMaxScore do {
 	_target = _rangeArray call BIS_fnc_selectRandom;
+	if (_previousTarget == _target) then {
+	  _target = _rangeArray call BIS_fnc_selectRandom;
+	  if (_previousTarget == _target) then {
+	    _target = _rangeArray call BIS_fnc_selectRandom;
+	  };
+	};
+	_target addMPEventHandler ["MPHit", format ["_null = [%1,%2] call fnc_target", _target, _laneNum]];
 	_target animate ["terc", 0];
 	sleep _timeBetweenTargets;
 	_target animate ["terc", 1];
+	_previousTarget = _target;
+	sleep _timeBetweenTargets;
 };
-_laneScore = profileNamespace getVariable "lane_score";
+
+_laneScore = call (compile (format ["profileNamespace getVariable ""lane_score_%1"";",_laneNum]));
 hint format ["Total Score: %1/60",_laneScore];
 
 //Crouch
@@ -87,18 +102,28 @@ sleep 5;
 hint "Prepare for Crouch Qualification";
 hint "Go to the Crouch Position";
 sleep 5;
-titleText ["Crouch - 20 Round","PLAIN",1];
 _stageMaxScore = 20;
 sleep _timeBetweenTargets;
 
 hint "Range is HOT!";
+_previousTarget = _rangeArray select 0;
+
 for "_i" from 1 to _stageMaxScore do {
 	_target = _rangeArray call BIS_fnc_selectRandom;
+	if (_previousTarget == _target) then {
+	  _target = _rangeArray call BIS_fnc_selectRandom;
+	  if (_previousTarget == _target) then {
+	    _target = _rangeArray call BIS_fnc_selectRandom;
+	  };
+	};
+	_target addMPEventHandler ["MPHit", format ["_null = [%1,%2] call fnc_target", _target, _laneNum]];
 	_target animate ["terc", 0];
 	sleep _timeBetweenTargets;
 	_target animate ["terc", 1];
+	_previousTarget = _target;
+	sleep _timeBetweenTargets;
 };
-_laneScore = profileNamespace getVariable "lane_score";
+_laneScore = call (compile (format ["profileNamespace getVariable ""lane_score_%1"";",_laneNum]));
 hint format ["Total Score: %1/60",_laneScore];
 
 //Prone
@@ -106,25 +131,33 @@ sleep 5;
 hint "Prepare for Prone Qualification";
 hint "Go to the Prone Position";
 sleep 5;
-titleText ["Prone - 30 Round","PLAIN",1];
 _stageMaxScore = 30;
 
 sleep _timeBetweenTargets;
 
 hint "Range is HOT!";
+_previousTarget = _rangeArray select 0;
+
 for "_i" from 1 to _stageMaxScore do {
 	_target = _rangeArray call BIS_fnc_selectRandom;
+	if (_previousTarget == _target) then {
+	  _target = _rangeArray call BIS_fnc_selectRandom;
+	  if (_previousTarget == _target) then {
+	    _target = _rangeArray call BIS_fnc_selectRandom;
+	  };
+	};
+	_target addMPEventHandler ["MPHit", format ["_null = [%1,%2] call fnc_target", _target, _laneNum]];
 	_target animate ["terc", 0];
 	sleep _timeBetweenTargets;
 	_target animate ["terc", 1];
+	_previousTarget = _target;
+	sleep _timeBetweenTargets;
 };
-_rifleArray = RangerMaster getVariable "rifleScores";
-_laneScore = profileNamespace getVariable "lane_score";
+_laneScore = call (compile (format ["profileNamespace getVariable ""lane_score_%1"";",_laneNum]));
 hint format ["Total Score: %1/60",_laneScore];
 
 //Reset Range
 sleep 5;
-{_x removeMPEventHandler ["MPHit", 0];} forEach _rangeArray;
 {_x animate ["terc", 0];} forEach _rangeArray;
 hint "CEASE FIRE - RANGE IS CLEAR. Return to your instructor for further details.";
 
@@ -141,4 +174,4 @@ if (rrfFusion == 1) then {
 sleep 5;
 //Determine Qualification
 hint format ["Final Report: %1/60 \n \n Remove the Magazine from your weapon!",_laneScore];
-profileNamespace setVariable ["lane_score",0];
+call (compile (format ["profileNamespace setVariable [""lane_score_%1"",%2];",_laneNum,0]));

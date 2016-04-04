@@ -27,3 +27,10 @@ waitUntil {scriptDone _h};
 if (rrfFusion == 1) then {
 	_h =  ["deployment","wake"] call rrf_fnc_utility_serverGetID;
 };
+
+
+// Third Party
+[] execVM "framework\3rd_party\fn_advancedTowingInit.sqf";
+[] execVM "framework\3rd_party\fn_advancedSlingLoadingInit.sqf";
+
+missionNamespace setVariable ["SA_ASL_HEAVY_LIFTING_ENABLED",true,true];
