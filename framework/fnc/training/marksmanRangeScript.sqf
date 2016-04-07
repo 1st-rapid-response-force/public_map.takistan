@@ -73,7 +73,7 @@ _null = call fnc_countDown10;
 {_x animate ["terc", 1];} forEach _rangeArray;
 
 //Standing
-_stageMaxScore = 10;
+_stageMaxScore = 20;
 sleep _timeBetweenTargets;
 hint "Range is HOT!";
 _previousTarget = _rangeArray select 0;
@@ -106,7 +106,7 @@ hint "CEASE FIRE - RANGE IS CLEAR. Return to your instructor for further details
 // We will need to create a method for storing this information
 if (rrfFusion == 1) then {
 	if (_storeResult == 1) then {
-	    _store = [_uuid, _rangeType, _laneScore, 60, _weapon] remoteExecCall ["rrf_fnc_training_serverStoreRange",2];
+	    _store = [_uuid, _rangeType, _laneScore, 20, _weapon] remoteExecCall ["rrf_fnc_training_serverStoreRange",2];
 	    RangerMaster sideChat format["MARKSMAN LANE %1 - %2/20 - Score has been saved to Catalyst",_laneNum,_laneScore];
 	};
 };
