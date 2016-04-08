@@ -18,18 +18,24 @@
 _server_id = server_id;
 _uuid = _this select 0;
 _name = _this select 1;
-_score = _this select 2;
-_scoreMax = _this select 3;
-_weaponUsed = _this select 4;
+_scoreMax = _this select 2;
+_weaponUsed = _this select 3;
+_rangeId = _this select 4;
 
-[_uuid, _name, _score, _scoreMax, _weaponUsed] spawn {
+
+
+[_uuid, _name, _scoreMax, _weaponUsed,_rangeId] spawn {
         _uuid = _this select 0;
 		_name = _this select 1;
-		_score = _this select 2;
-		_scoreMax = _this select 3;
-		_weaponUsed = _this select 4;
+		_scoreMax = _this select 2;
+		_weaponUsed = _this select 3;
+		_rangeId = _this select 4;
+
+        _method = "range_read";
+        _params = [[server_id,_rangeId]];
+        _score = [_method, _params] call sock_rpc;
+
         _method = "save_qualification";
         _params = [[server_id,_uuid, _name, _score, _scoreMax, _weaponUsed]];
         _response = [_method, _params] call sock_rpc;
-
 };
