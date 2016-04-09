@@ -9,7 +9,7 @@
 [] spawn {
 	waitUntil {!isNull player};
 
-	titleText ["WAKE ISLAND\n\n 1st RRF", "BLACK FADED", .5];
+	titleText ["DEPLOYMENT WAKE ISLAND\n\n 1st RRF", "BLACK FADED", .5];
 	sleep 5;
 
 	//Gets ID used for remoteExec

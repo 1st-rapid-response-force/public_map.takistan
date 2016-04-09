@@ -29,8 +29,7 @@ _laneNum = _this select 0;
 _rangeArray = _this select 1;
 _timeBetweenTargets = _this select 2;
 _storeResult = _this select 3;
-_rangeMaster = _this select 4;
-_rangeId = _this select 5;
+_rangeId = _this select 4;
 
 // Call Function on Server by sending it the neccessary information
 [_rangeId] remoteExecCall ["rrf_fnc_training_serverRangeStart", 2];

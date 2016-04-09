@@ -26,7 +26,4 @@ _ownerID = owner _player;
         _params = [[server_id,_rangeId]];
         _response = [_method, _params] call sock_rpc;
 
-		//Fusion will issue a hint to notify user of their score.
- 		_h = [_response,_maxScore] remoteExecCall ["rrf_fnc_training_reportScore",_player];
-
 };
