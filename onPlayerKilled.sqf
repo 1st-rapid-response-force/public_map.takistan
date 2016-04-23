@@ -21,9 +21,8 @@ _playerUUID = getPlayerUID _player;
 hint format ["%1",_playerUUID];
 // Call Function on Server by sending it the neccessary information
 if (rrfFusion == 1) then {
-		[_playerUUID] remoteExecCall ["rrf_fnc_analytics_deathEvent", 2];
+	[_playerUUID] remoteExecCall ["rrf_fnc_analytics_deathEvent", 2];
 };
-
 if (debugEnabled == 1) then {
     hint format['%1 | %2',_playerUUID,_data];
 };
