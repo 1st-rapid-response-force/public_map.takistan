@@ -17,6 +17,8 @@ if (isServer) then {
   };
   // Persistence
   if (rrfPersistence == 1) then {
+    rrf_fnc_persistence_player_serverStoreLoadouts =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverStoreLoadouts.sqf';
+    rrf_fnc_persistence_player_serverStorePositions =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverStorePositions.sqf';
     rrf_fnc_persistence_player_serverStoreLoadout =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverStoreLoadout.sqf';
     rrf_fnc_persistence_player_serverStorePosition =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverStorePosition.sqf';
     rrf_fnc_persistence_player_serverRestoreLoadout =  compile preprocessfilelinenumbers 'framework\fnc\persistence\player\serverRestoreLoadout.sqf';
@@ -88,14 +90,6 @@ if (!isDedicated) then {
   if (rrfWebLoadout == 1) then {
     rrf_fnc_loadout_setupArmory = compile preprocessfilelinenumbers "framework\fnc\armory\setupArmory.sqf";
     rrf_fnc_loadout_getLoadout = compile preprocessfilelinenumbers "framework\fnc\armory\getLoadout.sqf";
-  };
-
-  rrf_fnc_toc_setupTOC = compile preprocessfilelinenumbers "framework\fnc\toc\setupTOC.sqf";
-  rrf_fnc_toc_openCoalaOS = compile preprocessfilelinenumbers "framework\fnc\toc\openCoalaOS.sqf";
-
-  if (rrfPersistence == 1) then {
-    rrf_fnc_loops_criticalLoop = compile preprocessfilelinenumbers "framework\fnc\loops\critical_loop.sqf";
-    rrf_fnc_loops_nonCriticalLoop = compile preprocessfilelinenumbers "framework\fnc\loops\non_critical_loop.sqf";
   };
 
 };

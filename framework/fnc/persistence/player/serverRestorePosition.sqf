@@ -15,7 +15,6 @@
 _serverID = server_id;
 _player = _this select 0;
 _playerUUID = getPlayerUID _player;
-_ownerID = _this select 1;
 
 //Fusion Code to Pull and store information
 [_playerUUID,_player,_ownerID] spawn {
@@ -28,6 +27,6 @@ _ownerID = _this select 1;
 	  _positionArray = _response;
 
     //Fusion will need to restore position or store existing if no match is found.
-      _h = [_player,_positionArray] remoteExecCall ["rrf_fnc_persistence_player_restorePlayerPosition",_ownerID];
+      _h = [_player,_positionArray] remoteExecCall ["rrf_fnc_persistence_player_restorePlayerPosition",_player];
 };
 

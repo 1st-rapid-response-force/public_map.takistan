@@ -29,6 +29,6 @@ _playerUUID = getPlayerUID _player;
 
 
 		//Fusion will need to restore loadout or store existing if no match is found.
- 		_h = [_player,_loadoutArray,true,true] remoteExecCall ["ACE_common_fnc_setAllGear",_ownerID];
+ 		_h = [_player,_loadoutArray,true,true] remoteExecCall ["ACE_common_fnc_setAllGear",_player];
 
 };
